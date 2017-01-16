@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<style type="text/css">
+			#search {
+				margin-left: 460px;
+			}
+			.feature-inner { background: orange none repeat scroll 0 0;
+				height: 45px;
+				margin: auto;
+				border-radius: 15px;
+				padding: 0;
+				width: 91.5%;
+				top:-10px;
+			}
+			.feature-inner h1 {color:#f9ebdb;font-size:32px;margin-left: 400px;}
+			#resultDiv1{
+				border: 2px solid orange;
+				border-radius: 10px;
+				height: 210px;
+				left: 54px;
+				padding: 20px;
+				position: absolute;
+				top: 403px;
+				width: 500px;
+			}
+			#resultDiv2{
+				border: 2px solid orange;
+				border-radius: 10px;
+				height: 210px;
+				left: 554px;
+				padding: 20px;
+				position: absolute;
+				top: 403px;
+				width: 670px;
+			}
+			#resultGenre{
+				position: relative;
+				text-align: center;
+				top: 50%;
+				font-family: fantasy, Times, serif;
+				font-size: 300%;
+				font-weight: bold;
+			}
+
+		</style>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Movie Genre Classifier</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+		<!--<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">-->
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="feature-inner">
+			<h1>Movie Genre Identifier</h1>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="well">
+					<form>
+    					<fieldset>
+							<div class="form-group" id="formHead">
+            					<label for="comment">Enter Movie Summary here:</label>
+            					<textarea class="form-control" rows="7" id="comment"></textarea><br>
+								<button class="btn btn-large btn-primary" type="button" id="search">Click to get Genre</button>
+        					</div>
+    					</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="resultDiv1">
+			<p id="resultGenre"></p>
+		</div>
+		<div id="resultDiv2">
+			<table class="table table-striped" id="movieTable">
+				<thead>
+				<tr>
+					<th>Similar Movie</th>
+					<th>Genre</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var phpResultGenre
+	var actionMovies=["Inception","Kick-Ass","Salt","The A-Team","The Book of Eli","Iron Man 2","Clash of the Titans","The Karate Kid","The Expendables","Knight and Day","Rise of the Planet of the Apes","Mission: Impossible - Ghost Protocol","Real Steel","X-Men: First Class","Fast Five","Thor","Captain America: The First Avenger","I Am Number Four","Drive","Transformers: Dark of the Moon","The Dark Knight Rises","The Avengers","Looper","The Amazing Spider-Man","The Raid: Redemption","Dredd","The Expendables 2","21 Jump Street","Total Recall","The Hunger Games","Man of Steel","Pacific Rim","Star Trek Into Darkness","Fast & Furious 6","Iron Man 3","Thor: The Dark World","The Hobbit: The Desolation of Smaug","The Hunger Games: Catching Fire","Olympus Has Fallen","White House Down","Edge of Tomorrow","Captain America: The Winter Soldier","X-Men: Days of Future Past","Dawn of the Planet of the Apes","The Raid 2","The Amazing Spider-Man 2","Guardians of the Galaxy","Need for Speed","300: Rise of an Empire"];
+	var thrillerMovies=["The Bourne Ultimatum","Black Swan","No Country for Old Men","Run Lola Run","Se7en","Sin City","The Silence of the Lambs","Minority Report","The Game","Shutter Island","The Fugitive","The Others","Kill Bill: Vol. 2","Ghost Dog: The Way of the Samurai","Mulholland Dr.","Insomnia","Chinatown","21 Grams","Mystic River","The Prestige","The Usual Suspects","Prisoners","Collateral","Jaws","Lucky Number Slevin","Oldboy","The Sixth Sense","Apocalypto","V for Vendetta","Twelve Monkeys","127 Hours","Eyes Wide Shut","Straw Dogs","Munich","The Next Three Days","Amores Perros","The Girl with the Dragon Tattoo","Face/Off","Memento","Gravity","Casino Royale","Mr. Brooks","Mission: Impossible","Irreversible","Elephant","North by Northwest","Now You See Me","Rear Window","The Devil's Advocate","The Untouchables","Spy Game"];
+	var comedyMovies=["Step Brothers","White Chicks","The Hot Chick","The Hangover","Horrible Bosses","Drillbit Taylor","Wedding Crashers","Bad Teacher","The Other Guys","Due Date","Taxi","The Heat","We're the Millers","Bringing Down the House","Role Models","The Bounty Hunter","Let's Be Cops","Mr. Bean's Holiday","The Interview","Big Mommas: Like Father, Like Son","The Perfect Score","Jackass Presents: Bad Grandpa","Hall Pass","Paul","Just Go with It","Date Night","Grown Ups","Project X","21 Jump Street","The Green Hornet","American Reunion","Accepted","It's a Boy Girl Thing","Death at a Funeral","Guess Who","College","17 Again","This Is the End","Cop Out","Fired Up!","30 Minutes or Less","Someone Marry Barry","This Means War","Pineapple Express","A Haunted House","Big Momma's House 2","The Hangover Part II","The Hangover Part III","The Change-Up","Ted"];
+	var dramaMovies=["There Will Be Blood ","12 Angry Men","Big Fish","Million Dollar Baby","Rescue Dawn","The Prestige","The Pursuit of Happyness","The Shawshank Redemption","Training Day","Changeling","Cast Away","Eastern Promises","Gran Torino","Lucky Number Slevin","Moon","Murder on the Orient Express","Mercury Rising","Revolver","Seven Pounds","Pulp Fiction","The Notebook","The Time Traveler's Wife","Into the Wild","Rope","The Motorcycle Diaries","Slumdog Millionaire","Apocalypto","Behind Enemy Lines","21 Grams","Blindness","Crash","Oldboy","Hostage","Juno","American Beauty","The Social Network","Fight Club","Gone Baby Gone","The Green Mile","A.I. Artificial Intelligence","I Am Sam","Children of Men","Contact","Frequency","The Sixth Sense","The Forgotten","Perfume: The Story of a Murderer","Gladiator","The Reader","The Machinist"];
+	var horrorMovies=["28 Days Later","The Descent","The Conjuring","Insidious","[Rec]","Let the Right One In","I Saw the Devil","The Mist","Battle Royale","Saw","Three... Extremes","Shutter","The Others","A Tale of Two Sisters","Eden Lake","Zombieland","Shaun of the Dead","The Orphanage","Greedy Guts","The Devil's Backbone","Trollhunter","Silent Hill","Drag Me to Hell","1408","Red Eye","It Follows","Confessions","The Devil's Rejects","Sleep Tight","Dawn of the Dead","Sinister","The Babadook","Taxidermia","Pulse","Inside","Ju-on: The Grudge","Rinne","High Tension","Ginger Snaps","Ginger Snaps 2: Unleashed","The Eye","The Ring","The House of the Devil","30 Days of Night","The Loved Ones","The Cabin in the Woods","Shadow of the Vampire","The Hills Have Eyes","Let Me In","Thirst"];
+	var fictionMovies=["Star Wars","Alien","Inception","2001: A Space Odyssey","Interstellar","Star Wars: Episode V - The Empire Strikes Back","Blade Runner","The Thing","Terminator 2: Judgment Day","Star Wars: Episode VI - Return of the Jedi","District 9","Close Encounters of the Third Kind","Guardians of the Galaxy","Moon","Twelve Monkeys","Donnie Darko","Gravity","Back to the Future","Avatar","Brazil","A Clockwork Orange","The Matrix","Total Recall","Jurassic Park","Planet of the Apes","E.T. the Extra-Terrestrial","RoboCop","Star Trek","The Terminator","The Day the Earth Stood Still","Dark City","The Fifth Element","Mad Max 2: The Road Warrior","Star Trek II: The Wrath of Khan","Armageddon","Children of Men","Minority Report","The Truman Show","Star Trek Into Darkness","Serenity","Aliens","Predator","Metropolis","Independence Day","The Avengers","Edge of Tomorrow","Gattaca","X-Men: Days of Future Past","Rise of the Planet of the Apes","Night of the Living Dead"];
+	$(document).ready(function() {
+		$("#movieTable").hide();
+		$("#search").click(function(){
+			var summaryText=$("#comment").val();
+			$("#resultGenre").html("Loading Genre....")
+			$("#movieTable").hide();
+			processSummary(summaryText)
+			$("#resultGenre").html(phpResultGenre)
+			generateSimilarList()
+		});
+	});
+
+	function generateSimilarList()
+	{
+		$("#movieTable").show();
+		var table = $("table tbody");
+
+		table.find('tr').each(function (i) {
+			var $tds = $(this).find('td');
+			if(phpResultGenre.search("Action")==0)
+			{
+				$tds.eq(0).text(actionMovies[Math.floor((Math.random() * 40) + 1)]);
+				$tds.eq(1).text("Action");
+			}
+			if(phpResultGenre.search("Thriller")==0)
+			{
+				$tds.eq(0).text(thrillerMovies[Math.floor((Math.random() * 40) + 1)]);
+				$tds.eq(1).text("Thriller");
+			}
+			if(phpResultGenre.search("Comedy")==0)
+			{
+				$tds.eq(0).text(comedyMovies[Math.floor((Math.random() * 40) + 1)]);
+				$tds.eq(1).text("Comedy");
+			}
+			if(phpResultGenre.search("Drama")==0)
+			{
+				$tds.eq(0).text(dramaMovies[Math.floor((Math.random() * 40) + 1)]);
+				$tds.eq(1).text("Drama");
+			}
+			if(phpResultGenre.search("Horror")==0)
+			{
+				$tds.eq(0).text(horrorMovies[Math.floor((Math.random() * 40) + 1)]);
+				$tds.eq(1).text("Horror");
+			}
+			if(phpResultGenre.search("Sci-Fi")==0)
+			{
+				$tds.eq(0).text(fictionMovies[Math.floor((Math.random() * 40) + 1)]);
+				$tds.eq(1).text("Sci-Fi");
+			}
+		});
+	}
+	function processSummary(summaryText)
+	{
+		$.ajax({
+			url: "nlpprog.php",
+			type: 'POST',
+			data:{ "summary":summaryText },
+			error: function(xhr,ajaxOptions,thrownError) {
+
+				alert("ajaxOptions= "+ajaxOptions+"thrownError="+thrownError);
+				alert("xhr.responseText="+xhr.responseText);
+			},
+			success: function(data){
+				//alert("NLP Php processing successfull="+data);
+				phpResultGenre=data;
+			},
+			async:false
+		});
+
+	}
+
+</script>
+</body>
+</html>

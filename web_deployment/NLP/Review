@@ -1,0 +1,137 @@
+Review 1 
+
+The group number was: G9 - Keyword extraction - Predicting stack exchange tags
+
+What was the goal of the group's project?
+ predict the tags given only the question text and its title
+
+
+How did the group attempt to accomplish the goal?
+
+Content from disparate stack exchange sites containing a mix of both technical and non-technical question
+
+Data cleaning -> Feature extraction -> Model Selection and training -> performance evaluation
+do the normal nlp calculation like stopword removal---
+
+Bag of words sklearn: 
+mdels used SVM,CRF and naive bayes
+adaboost
+
+How did the group evaluate their work and what was the result?
+
+6. Review 2
+
+The group number was: group_11
+
+
+What was the goal of the group's project?
+
+
+disease diagnosis system
+
+dialog management 
+and information extraction
+
+How did the group attempt to accomplish the goal?
+
+
+OPen dial for dialog management
+using slot filling and form filling to interact
+NLG usus a  handcrafted dialog system
+Stemming lemmatization
+spell check
+synonym extraction
+
+
+
+How did the group evaluate their work and what was the result?
+
+Baseline system
+	Simple regular exoression to extract symptoms as a keyword 
+Advanced system
+
+7. Review 3
+
+The group number was: g-17
+
+What was the goal of the group's project?
+
+Using sentiment analysis to predict stock market
+
+How did the group attempt to accomplish the goal?
+
+ashwinss@usc.edu
+
+
+How did the group evaluate their work and what was the result?
+
+8. Review 4
+
+The group number was: g-16cc 
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
+9. Review 5
+
+The group number was:
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
+10. Review 6
+
+The group number was:
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
+11. Review 7
+
+The group number was:
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
+12. Review 8
+
+The group number was:
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
+13. Review 9
+
+The group number was:
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
+14. Review 10
+
+The group number was:
+
+What was the goal of the group's project?
+
+How did the group attempt to accomplish the goal?
+
+How did the group evaluate their work and what was the result?
+
